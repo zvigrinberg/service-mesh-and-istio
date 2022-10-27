@@ -60,7 +60,7 @@ env | grep -E 'INGRESS_|SECURE_IN'
 export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
 ```
 
-11. Print the endpoint of the service with the gateway address and port, and open it in a web browser to see the web page shown correctly, or run the second command to do it automatically: 
+11. Print the endpoint of the service with the gateway address and port, and open it in a web browser to see that the web page shown correctly, or run the second command to do it automatically: 
 ```shell
 echo "http://$GATEWAY_URL/productpage"
 xdg-open http://$GATEWAY_URL/productpage
