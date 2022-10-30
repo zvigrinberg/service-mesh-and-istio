@@ -104,6 +104,12 @@ istioctl dashboard kiali
 for i in {1..500}; do curl -s -o /dev/null "http://$GATEWAY_URL/productpage"; done
 ```
 
+6. If not opened automatically, open kiali dashboard site manually 
+```shell
+xdg-open http://localhost:20001/
+```
+
+7. At kiali site, set above namespace to `default`, and go to graph on the left panel, you should see your mesh visualization, if not shown, repeat step 5 again.
 
 
 
