@@ -6,7 +6,11 @@ This repository will contain istio demos, examples and more.
 - Istio command line tool - to download and install kindly follow [that link](https://istio.io/latest/docs/setup/getting-started/#download)
 
 ## Procedures
-1. Connect to Cluster.
+1. Connect to Cluster(Or create cluster using kind or minikube), for example, if you're using  minikube, then to create/start the cluster:
+```shell
+minikube start
+```
+
 2. Install istio control planne on cluster
 ```shell
 istioctl install --set profile=demo -y
@@ -65,4 +69,43 @@ export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
 echo "http://$GATEWAY_URL/productpage"
 xdg-open http://$GATEWAY_URL/productpage
 ```
+
+## Visualization Of Mesh - Kiali Dashboard 
+
+In order to visualize your service mesh using Kiali dashboard, Istio integrates with several different telemetry apps, such as Prometheus(Time Series Metrics Aggregator) , Grafana(Metrics Visualization) And jaeger(Traces and spans Server):
+
+Installs Kiali with all Telemtry add-ons:
+ 
+1. Download manifests of kiali and addons from Istio repository 
+```shell
+git clone --sparse --filter=blob:none --depth=1 --branch=master https://github.com/istio/istio.git
+cd istio
+git sparse-checkout add samples/addons
+cd ..
+```
+2. Install kiali and add-ons:
+```shell
+ kubectl apply -f istio/samples/addons
+```
+
+3. Wait for kiali Deployment to complete its rollout successfully
+```shell
+kubectl rollout status deployment/kiali -n istio-system
+Waiting for deployment "kiali" rollout to finish: 0 of 1 updated replicas are available...
+deployment "kiali" successfully rolled out
+```
+
+4. On a new terminal window, open kiali dashboard:
+```shell
+istioctl dashboard kiali
+```
+5. Simulate incoming traffic to your sample mesh
+```shell
+for i in {1..500}; do curl -s -o /dev/null "http://$GATEWAY_URL/productpage"; done
+```
+
+
+
+
+
 
