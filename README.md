@@ -111,6 +111,11 @@ xdg-open http://localhost:20001/
 
 7. At kiali site, set above namespace to `default`, and go to graph on the left panel, you should see your mesh visualization, if not shown, repeat step 5 again.
 
+8. If using minikube, then release memory and cpu resources by stoping the cluster and its underlying virtualization machine:
+```shell
+minikube stop
+```
+
 
 
 
