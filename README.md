@@ -1,5 +1,6 @@
 # Service mesh and Istio
 This repository will contain istio demos, examples and more.
+It will go through all Istio Features.
 
 ## Pre-requisites.
 - Kubernetes/Openshift cluster or local cluster/container cluster with [minikube](https://minikube.sigs.k8s.io/docs/start/) or [kind](https://kind.sigs.k8s.io/)
