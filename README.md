@@ -19,7 +19,7 @@ istioctl install --set profile=demo -y
 3. Enable istio automatic sidecar injection to all pods in $NAMESPACE
 ```shell
 export $NAMESPACE=default
-kubectl label $NAMESPACE istio-injection=enabled
+kubectl label namespace $NAMESPACE istio-injection=enabled
 ```
 4. Install a sample/demo deployment
 ```shell
